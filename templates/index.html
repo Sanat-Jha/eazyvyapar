@@ -1,0 +1,791 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>EazyVyapar</title>
+    <link rel="icon" href="{% static 'logo2.jpeg' %}" type="image/icon type">
+    <script>
+        $(window).scroll(function () {
+            if (checkVisible($('#main'))) {
+                $('.slider').css("margin-left", "0%");
+            }
+            else if (checkVisible($('#aboutus'))) {
+                $('.slider').css("margin-left", "75%");
+            }
+            else if (checkVisible($('#register'))) {
+                $('.slider').css("margin-left", "25%");
+            }
+            else if (checkVisible($('#contactus'))) {
+                $('.slider').css("margin-left", "50%");
+            }
+        });
+
+        function checkVisible(elm, eval) {
+            eval = eval || "visible";
+            var vpH = $(window).height(), // Viewport Height
+                st = $(window).scrollTop(), // Scroll Top
+                y = $(elm).offset().top,
+                elementHeight = $(elm).height() - 200;
+
+            if (eval == "visible") return ((y < (vpH + st)) && (y > (st - elementHeight)));
+            if (eval == "above") return ((y < (vpH + st)));
+        }
+
+
+        document.onreadystatechange = function () {
+            if (document.readyState === 'complete') {
+                {% if register != None %}
+                {% if register %}
+                alert("Thank you for joining us at EazyVyapar. We will contact you soon.")
+                {% else %}
+                alert("We have recieved your query and will reply to you soon.")
+                {% endif %}
+                {% endif %}
+
+            }
+        }
+
+
+
+
+    </script>
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        @media (min-width:1200px) {
+            #mainform {
+                width: 250%;
+            }
+
+            #share {
+                display: none;
+            }
+
+            ul {
+                margin-top: 0;
+                margin-left: 350px;
+                position: absolute;
+                width: 45%;
+                list-style: none;
+                display: flex;
+                justify-content: space-between;
+                padding: 20px 0;
+                position: fixed;
+                overflow: hidden;
+                z-index: 100;
+                background-color: rgb(0, 47, 255);
+                border-radius: 5px;
+                color: white;
+            }
+
+            li {
+                width: 100%;
+                height: 100%;
+                text-align: center;
+            }
+
+            a {
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 20px;
+                font-family: 'Century Gothic';
+                cursor: pointer;
+            }
+
+            .slider {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 25%;
+                height: 5px;
+                background-color: #000000;
+                transition: all 0.3s ease-out;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+
+                    {
+                    % block a %
+                }
+
+                    {
+                    % endblock a %
+                }
+            }
+
+            li:nth-child(1):hover~.slider {
+                margin-left: 0%;
+            }
+
+            li:nth-child(2):hover~.slider {
+                margin-left: 25%;
+            }
+
+            li:nth-child(3):hover~.slider {
+                margin-left: 50%;
+            }
+
+            li:nth-child(4):hover~.slider {
+                margin-left: 75%;
+            }
+
+            .myButton {
+                box-shadow: 0px 10px 14px -7px #000000;
+                background: linear-gradient(to bottom, #0eb81d 5%, #eaff00 100%);
+                background-color: #0eb81d;
+                border-radius: 8px;
+                display: inline-block;
+                cursor: pointer;
+                color: #ffffff;
+                font-family: Arial;
+                font-size: 20px;
+                font-weight: bold;
+                padding: 13px 32px;
+                text-decoration: none;
+                text-shadow: 0px 1px 0px #3d768a;
+                position: absolute;
+                margin-top: 550px;
+                margin-left: -100px;
+            }
+
+            .myButton:hover {
+                background: linear-gradient(to bottom, #eaff00 5%, #0eb81d 100%);
+                background-color: #eaff00;
+            }
+
+            #logo {
+                border-bottom-right-radius: 20px;
+                border-bottom-left-radius: 20px;
+            }
+
+            #logoholder {
+                width: 200px;
+                height: 100px;
+                background-color: white;
+                float: left;
+                border-bottom-right-radius: 20px;
+                border-bottom-left-radius: 20px;
+                margin-left: 50px;
+
+            }
+
+            #main {
+                background-color: rgb(0, 47, 255);
+                width: inherit;
+                height: 700px;
+            }
+
+            #eb {
+                margin-top: 200px;
+                margin-left: 125px;
+                font-size: 90px;
+                position: absolute;
+                color: white
+            }
+
+            #tagline {
+                margin-top: 435px;
+                margin-left: 125px;
+                font-size: 30px;
+                position: absolute;
+                color: rgb(251, 255, 0)
+            }
+
+            #register {
+                background: linear-gradient(rgba(0, 204, 255, 0.925), rgba(0, 0, 139, 0.89));
+            }
+
+            #registerpic {
+                margin-top: 50px;
+                border-bottom-right-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+
+            #registerbox {
+                width: 30%;
+                background: linear-gradient(rgb(35, 35, 126), lightblue);
+                margin: auto;
+                padding: 10px;
+                border-radius: 10px;
+                box-shadow: 30px 30px rgba(0, 0, 0, 0.2);
+            }
+
+            #giveyourdetails {
+                font-size: 30px;
+                background-color: white;
+                border-radius: 5px;
+                width: fit-content;
+                text-indent: 5px;
+                margin: auto;
+            }
+
+            .w {
+                width: 100%;
+            }
+
+            .takeinput {
+                width: 30%;
+                margin-bottom: 30px;
+                margin-top: 30px;
+            }
+
+            #registersubmit {
+                margin: auto;
+                margin-top: 20px
+            }
+
+            #contactus {
+                background: linear-gradient(white, rgba(206, 8, 8, 0.89));
+            }
+
+            #contactushead {
+                background-color: maroon;
+                width: max-content;
+                height: 70px;
+            }
+
+            #contactusp {
+                font-size: 50px;
+                color: lawngreen;
+                text-indent: 50px;
+            }
+
+            #flname {
+                width: 60%;
+                margin-left: 50px;
+                margin-bottom: 30px;
+                margin-top: 50px;
+            }
+
+            #email {
+                width: 30%;
+                margin-left: 50px;
+                margin-bottom: 30px;
+            }
+
+            #phone {
+                width: 30%;
+                margin-left: 50px;
+            }
+
+            #querylabel {
+                background-color: mediumaquamarine;
+                margin-bottom: 0;
+                margin-top: 20px;
+                margin-left: 10px;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+                padding: 5px;
+                margin-top: 30px;
+                margin-left: 60px;
+            }
+
+            #queryselector {
+                width: 30%;
+                margin-left: 50px;
+            }
+
+            #query {
+                width: 70%;
+                margin-left: 50px;
+            }
+
+            #querylabel2 {
+                background-color: mediumaquamarine;
+                margin-bottom: 0;
+                margin-top: 20px;
+                margin-left: 10px;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+                padding: 5px;
+            }
+
+            #contactsubmit {
+                margin-left: 50px;
+                margin-top: 20px;
+                background-color: cyan;
+                color: black;
+            }
+
+            #callpic {
+                width: 30px;
+                height: 25px;
+                margin-bottom: 40px;
+                margin-right: -10px;
+            }
+
+            #call {
+                background-color: orange;
+                padding: 5px;
+            }
+
+            #mailpic {
+                width: 30px;
+                height: 25px;
+                margin-bottom: 40px;
+                margin-left: 70px;
+            }
+
+            #mail {
+                background-color: orange;
+                padding: 5px;
+            }
+
+            #foot {
+                background-color: khaki;
+            }
+
+            #deco1 {
+                margin-top: 5px;
+                float: right;
+            }
+
+            #mainpic {
+                margin-left: 700px;
+                margin-top: -5px;
+                height: 450px;
+                width: 600px;
+            }
+
+            .nextprev {
+                background-color: black;
+            }
+
+            #mailbr {
+                display: none;
+            }
+
+            #menuicon {
+                display: none;
+            }
+
+            #deco2 {
+                margin-top: -720px;
+                position: absolute;
+                margin-bottom: 100px;
+            }
+
+            .whatsapp {
+                display: none;
+            }
+
+
+            #share {
+                display: none;
+            }
+        }
+
+
+
+        @media(max-width:1199px) {
+            #share {
+                margin-left: 85%;
+                position: absolute;
+                /* border-radius: 22%; */
+                border-bottom-left-radius: 22%;
+                border-bottom-right-radius: 22%;
+                width: 10%;
+                height: auto;
+            }
+
+            #logoholder {
+                width: 100%;
+                background-color: black;
+                padding: 2px;
+
+            }
+
+            #logo {
+                margin-left: 37.5%;
+                width: 25%;
+                height: auto;
+                border-radius: 5px;
+            }
+
+            #deco2 {
+                margin-top: -5px;
+                width: 100%;
+                height: auto;
+            }
+
+            #deco1 {
+                visibility: hidden;
+            }
+
+            ul {
+                display: none;
+            }
+
+            #mainpic {
+                display: none;
+            }
+
+            #main {
+                background-color: rgb(0, 47, 255);
+                width: 100%;
+                height: 300px;
+            }
+
+            #aboutus {
+                display: none;
+            }
+
+            #eb {
+                margin-top: 20px;
+                margin-left: 25px;
+                font-size: 40px;
+                position: absolute;
+                color: white
+            }
+
+            #tagline {
+                margin-top: 135px;
+                margin-left: 25px;
+                font-size: 20px;
+                position: absolute;
+                color: rgb(251, 255, 0)
+            }
+
+            .myButton {
+                box-shadow: 0px 10px 14px -7px #000000;
+                background: linear-gradient(to bottom, #0eb81d 5%, #eaff00 100%);
+                background-color: #0eb81d;
+                border-radius: 8px;
+                display: inline-block;
+                cursor: pointer;
+                color: #ffffff;
+                font-family: Arial;
+                font-size: 15px;
+                font-weight: bold;
+                padding: 10px 30px;
+                text-decoration: none;
+                text-shadow: 0px 1px 0px #3d768a;
+                position: absolute;
+                margin-top: 220px;
+                margin-left: 25px;
+            }
+
+            #registerpic {
+                width: 40%;
+                height: auto;
+                margin-left: 30%;
+                margin-top: 45px;
+                box-shadow: 10px 10px rgba(0, 0, 0, 0.178);
+            }
+
+            #registerbox {
+                width: 85%;
+                background: linear-gradient(rgb(35, 35, 126), lightblue);
+                margin: auto;
+                padding: 10px;
+                border-radius: 10px;
+                box-shadow: 20px 20px rgba(0, 0, 0, 0.2);
+                margin-top: 30px;
+            }
+
+            .takeinput {
+                width: 30%;
+                margin-bottom: 30px;
+                margin-top: 30px;
+            }
+
+            #registersubmit {
+                margin: auto;
+                margin-top: 20px
+            }
+
+            #giveyourdetails {
+                font-size: 30px;
+                background-color: white;
+                border-radius: 5px;
+                width: fit-content;
+                text-indent: 5px;
+                margin: auto;
+            }
+
+            #contactus {
+                background: linear-gradient(white, rgba(206, 8, 8, 0.89));
+            }
+
+            #contactushead {
+                background-color: maroon;
+                width: 60%;
+                height: 50px;
+            }
+
+            #contactusp {
+                font-size: 200%;
+                color: lawngreen;
+                text-indent: 10%;
+            }
+
+            #flname {
+                width: 90%;
+                margin-left: 20px;
+                margin-bottom: 30px;
+                margin-top: 50px;
+            }
+
+            #email {
+                width: 90%;
+                margin-left: 20px;
+                margin-bottom: 30px;
+            }
+
+            #phone {
+                width: 90%;
+                margin-left: 20px;
+            }
+
+            #querylabel {
+                background-color: mediumaquamarine;
+                margin-bottom: 0;
+                margin-top: 20px;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+                padding: 5px;
+                margin-left: 25px;
+                font-size: 15px;
+            }
+
+            #queryselector {
+                width: 80%;
+                margin-left: 20px;
+            }
+
+            #query {
+                width: 85%;
+                margin-left: 20px;
+            }
+
+            #querylabel2 {
+                background-color: mediumaquamarine;
+                margin-bottom: 0;
+                margin-top: 20px;
+                margin-left: 5px;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+                padding: 5px;
+            }
+
+            #contactsubmit {
+                margin-left: 20px;
+                margin-top: 20px;
+                background-color: cyan;
+                color: black;
+            }
+
+            #callpic {
+                width: 30px;
+                height: 25px;
+                margin-bottom: 40px;
+                margin-right: -10px;
+            }
+
+            #call {
+                background-color: orange;
+                padding: 5px;
+                font-size: 20px;
+            }
+
+            #mailpic {
+                width: 30px;
+                height: 25px;
+                margin-bottom: 40px;
+            }
+
+            #mail {
+                background-color: orange;
+                padding: 5px;
+                font-size: 20px;
+            }
+
+            #foot {
+                background-color: khaki;
+            }
+
+            #menuicon {
+                width: 30px;
+                height: 30px;
+                margin-left: 70px;
+                position: fixed;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a
+        href="https://api.whatsapp.com/send?phone=919560096167&text= Hi! I am intertested in EVPL services to grow my business.">
+        <img src="whatsapp.png" id="share"></a>
+    <div id="logoholder">
+        <img src="{% static 'logo.jpeg' %}" height="100px" width="180px" id="logo">
+    </div>
+    <div>
+
+        <div class="menu">
+            <ul>
+                <li><a onclick="document.getElementById('main').scrollIntoView();">Home</a></li>
+                <li><a onclick="document.getElementById('register').scrollIntoView();">Register</a></li>
+                <li><a onclick="document.getElementById('contactus').scrollIntoView();">Contact US</a></li>
+                <li><a onclick="document.getElementById('aboutus').scrollIntoView();">About Us</a></li>
+                <div class="slider"></div>
+            </ul>
+        </div>
+
+        <div id="main">
+            <p id="eb">
+                Easing<br>Businesses </p>
+            <p id="tagline">We help you grow your business <br>easily in a simple manner.</p>
+            <a onclick="document.getElementById('register').scrollIntoView();" class="myButton">Start Now</a>
+            <img src="{% static 'deco1.png' %}" height="190" width="300px" id="deco1">
+            <img src="{% static '4380.jpg' %}" width="100%" id="mainpic">
+
+        </div>
+        <div>
+        </div>
+
+        <div id="aboutus">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{% static 'about_us.png' %}" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'services.jpg' %}" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'services.jpg' %}" class="d-block w-100">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon nextprev" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon nextprev" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <img src="{% static 'deco2.png' %}" width="100%" height="200px" id="deco2">
+        <div id="register">
+            <img src="{% static 'register.jpg' %}" width="250px" height="130px" id="registerpic">
+            <div id="registerbox">
+                <p id="giveyourdetails">
+                    Give Your Details</p>
+                <form action="" method="POST" id="mainform">{% csrf_token %}
+                    <div class="input-group takeinput">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">First name</span>
+                        </div>
+                        <input type="text" aria-label="First name" name="first name" class="form-control w" required>
+                    </div>
+                    <div class="input-group takeinput">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Last name</span>
+                        </div>
+                        <input type="text" aria-label="Last name" name="second name" class="form-control w">
+                    </div>
+
+                    <div class="input-group takeinput">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Email</span>
+                        </div>
+                        <input type="email" aria-label="email" name="email" class="form-control w" required>
+                    </div>
+                    <div class="input-group takeinput">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Phone</span>
+                        </div>
+                        <input type="text" aria-label="phone" name="phone" class="form-control w" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-success" id="registersubmit">Submit</button>
+            </div>
+            </form>
+            <br><br>
+        </div>
+        <div id="contactus">
+            <form action="" method="POST">{% csrf_token %}<br><br>
+                <div id="contactushead">
+                    <p id="contactusp">Contact Us...</p>
+                </div>
+
+                <div class="input-group" id="flname">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">First and last name</span>
+                    </div>
+                    <input type="text" aria-label="First name" name="first name" class="form-control" required>
+                    <input type="text" aria-label="Last name" name="second name" class="form-control">
+                </div>
+                <div class="input-group" id="email">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Email</span>
+                    </div>
+                    <input type="email" aria-label="email" name="email" class="form-control" required>
+                </div>
+                <div class="input-group" id="phone">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Phone</span>
+                    </div>
+                    <input type="text" aria-label="phone" name="phone" class="form-control">
+                </div>
+                <div id="query">
+                    <label id="querylabel2" for="exampleFormControlTextarea1"><B>Describe
+                            Your Query</B></label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="query"
+                        required></textarea>
+                </div>
+                <button type="submit" class="btn btn-success" id="contactsubmit"><b>Submit</b></button>
+            </form>
+            <br>
+            <br>
+        </div>
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Contact Our Team</h5>
+                <p class="card-text">For any help or query please contact our team.</p>
+                <img src="{% static 'call symbol.png' %}" id="callpic"><a href="#" id="call">1234567890</a><br
+                    id="mailbr">
+                <img src="{% static 'mail symbol.png' %}" id="mailpic"><a id="mail"
+                    href="https://mail.google.com/mail/u/0/#inbox?compose=jrjtXJTmXShLztMpQlcBbTmBlKQkZPQjspMpDJJKrPlRgQwZcTwTcctQpTQlQCJXSjTLGPdB"
+                    target="_blank">eazyvyapar@gmail.com</a>
+            </div>
+            <div class="card-footer text-muted" id="foot">
+                @EazyVyapar.in
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+    </div>
+
+
+
+</body>
+
+</html>
